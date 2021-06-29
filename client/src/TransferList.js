@@ -22,10 +22,12 @@ function TransferList({transfers, approveTransfer}) {
                             <td>{transfer.to}</td>
                             <td>
                                 {transfer.approvals}
+                            </td>
+                            <td>
+                                {transfer.sent ? 'yes':'no'}
                                 <button onClick = {() => approveTransfer(transfer.id)}>
                                     Approve</button>
                             </td>
-                            <td>{transfer.sent ? 'yes':'no'}</td>
                         </tr>
                     ))}
                 </tbody>

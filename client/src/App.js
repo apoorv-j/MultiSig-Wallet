@@ -44,15 +44,23 @@ function App() {
       <div>Loading...</div>
     );
   }
+
+  const updateTransferList = async () =>{
+    const transfers = await wallet.methods.getTransfers().call();
+    setTransers(transfers);
+  }
+
   const createTransfer = transfer => {
     wallet.methods
     .createTransfer(transfer.amount, transfer.to)
     .send({from: accounts[0]});
+    updateTransferList();
   };
   const approveTransfer = transferID => {
     wallet.methods
     .approveTransfer(transferID)
     .send({from: accounts[0]});
+    updateTransferList();
   };
 
   return (
